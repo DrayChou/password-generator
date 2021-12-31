@@ -37,12 +37,15 @@ function seek_password(hash, length, rule_of_punctuation, rule_of_letter) {
   var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
   var number = "0123456789".split("");
   var punctuation = "~*-+()!@#$^&".split("");
-  var alphabet = lower.concat(number);
-  if (parseInt(rule_of_punctuation) == 1) {
-    alphabet = alphabet.concat(punctuation);
-  }
-  if (parseInt(rule_of_letter) == 1) {
-    alphabet = alphabet.concat(upper);
+  var alphabet = number;
+  if (parseInt(rule_of_letter) > -2) {
+    alphabet = alphabet.concat(lower);
+    if (parseInt(rule_of_punctuation) == 1) {
+      alphabet = alphabet.concat(punctuation);
+    }
+    if (parseInt(rule_of_letter) == 1) {
+      alphabet = alphabet.concat(upper);
+    }
   }
 
   // 生成密码
@@ -50,23 +53,27 @@ function seek_password(hash, length, rule_of_punctuation, rule_of_letter) {
   for (var i = 0; i <= hash.length - length; ++i) {
     var sub_hash = hash.slice(i, i + parseInt(length)).split("");
     var count = 0;
-    var map_index = sub_hash.map(function(c) {
+    var map_index = sub_hash.map(function (c) {
       count = (count + c.charCodeAt()) % alphabet.length;
       return count;
     });
-    var sk_pwd = map_index.map(function(k) {
+    var sk_pwd = map_index.map(function (k) {
       return alphabet[k];
     });
 
     // 验证密码
     var matched = [false, false, false, false];
-    sk_pwd.forEach(function(e) {
+    sk_pwd.forEach(function (e) {
       matched[0] = matched[0] || lower.includes(e);
       matched[1] = matched[1] || upper.includes(e);
       matched[2] = matched[2] || number.includes(e);
       matched[3] = matched[3] || punctuation.includes(e);
     });
     if (parseInt(rule_of_letter) == -1) {
+      matched[1] = true;
+    }
+    if (parseInt(rule_of_letter) == -2) {
+      matched[0] = true;
       matched[1] = true;
     }
     if (parseInt(rule_of_punctuation) == -1) {

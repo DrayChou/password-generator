@@ -51,6 +51,10 @@
               <label class="input-group-text" for="pwd_length">密码长度</label>
             </div>
             <select class="custom-select" id="pwd_length">
+              <option value="6">6 位</option>
+              <option value="7">7 位</option>
+              <option value="8">8 位</option>
+              <option value="9">9 位</option>
               <option value="10">10 位</option>
               <option value="11">11 位</option>
               <option value="12">12 位</option>
@@ -68,15 +72,16 @@
           <!-- 选项 -->
           <div class="input-group mb-3">
             <select class="custom-select" id="rule_of_punctuation">
-              <option value="1" selected>使用标点</option>
-              <option value="-1">禁用标点</option>
+              <option value="1">使用标点</option>
+              <option value="-1" selected>禁用标点</option>
             </select>
             <div class="input-group-prepend">
               <label class="input-group-text">选项</label>
             </div>
             <select class="custom-select" id="rule_of_letter">
-              <option value="1" selected>字母区分大小写</option>
-              <option value="-1">字母全小写</option>
+              <option value="1">字母区分大小写</option>
+              <option value="-1" selected>字母全小写</option>
+              <option value="-2">纯数字</option>
             </select>
           </div>
 
@@ -109,7 +114,8 @@
   <script type="text/javascript" src="js/clipboard.min.js"></script>
   <script type="text/javascript" src="js/sha512.min.js"></script>
   <script type="text/javascript" src="js/PasswordQualityCalculator.min.js"></script>
-  <script type="text/javascript" src="src/seek_password.min.js"></script>
+  <!-- <script type="text/javascript" src="src/seek_password.min.js"></script> -->
+  <script type="text/javascript" src="src/seek_password.js"></script>
   <script type="text/javascript">
     var clipboard = new ClipboardJS("#btn_copy");
     document.getElementById("btn_gencode").onclick = function () {
