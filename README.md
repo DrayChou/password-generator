@@ -1,6 +1,6 @@
 # password-generator
 
-预览地址：https://mrjooz.github.io/password-generator/
+预览地址：https://draychou.github.io/password-generator/
 
 ## password-generator 是什么？
 
@@ -24,7 +24,7 @@ password-generator 是一款密码生成工具，用户只需要记住记忆密�
 - 邮件(i#mrjooz.com, 把#换成@)
 
 ## 感激
-
+- [password-generator](https://github.com/mrjooz/password-generator)
 - [seekpassword](https://github.com/Wsine/seekpassword)
 - [Bootstrap](https://www.bootcss.com/)
 - [PasswordQualityCalculator](https://www.npmjs.com/package/password-quality-calculator)
